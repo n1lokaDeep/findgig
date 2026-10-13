@@ -1,0 +1,27 @@
+[Unit]
+Description=FindGig Telegram bot
+Documentation=https://github.com/n1lokaDeep/findgig
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=findgig
+Group=findgig
+WorkingDirectory=/opt/findgig
+ExecStart=/opt/findgig/.venv/bin/python /opt/findgig/bot.py
+
+# Если бот упадёт — поднимется сам через 5 секунд.
+Restart=always
+RestartSec=5
+
+# Ограничения на случай, если бот начнёт жрать память.
+MemoryMax=512M
+
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=findgig
+
+[Install]
+WantedBy=multi-user.target
