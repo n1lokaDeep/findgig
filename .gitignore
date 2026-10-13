@@ -1,0 +1,13 @@
+# секреты
+.env
+
+# база данных
+*.db
+*.sqlite3
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
